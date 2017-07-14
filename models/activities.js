@@ -1,27 +1,20 @@
 const mongoose = require('mongoose');
 
 //Activities schema
-const activitiesSchema = mongoose.Schema({
+const activitySchema = mongoose.Schema({
   name:{
     type: String,
     required: true
   },
-  type:{
+  userId:{
     type: String,
     required: true,
-  },
-  stats:{
-    type: Number,
-    required: false
-  },
-  date:{
-    type: Date,
-    default: Date.now
   }
-    // timestamps: true??
 })
 
-const Activity = module.exports = mongoose.model('Activity', activitiesSchema);
+const Activity = mongoose.model('Activity', activitySchema);
+
+module.exports = Activity
 
 //Get activity
 module.exports.getActivities = function(callback, limit) {
@@ -54,7 +47,7 @@ module.exports.deleteActivity = function(id, callback) {
 };
 
 //Add stats to activity
-module.exports.addStats = function(id, ????) {
+module.exports.addStat = function(id, ????) {
     let query = {id: id};
     let update = {
       stats: activity.stats
