@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
 const statSchema = mongoose.Schema({
-  userId:{
-    type: String,
-    required: true
-  },
-  activityId:{
-    type: String,
-    required: true,
-  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: User
+  }
+  activity: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: Activity
+  }
   value:{
     type: Number,
     required: false
@@ -17,7 +17,7 @@ const statSchema = mongoose.Schema({
     type: Date,
     default: Date.now
   }
-})
+});
 
 const Stat = mongoose.model('Stat', statSchema);
 
